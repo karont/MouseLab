@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 import vista.imagenes.CargarImagenes;
 
-public class Vacio implements Entidad {
+public class Vacio implements Entitys {
 	private ImageIcon fondo;
 	//private Posicion posicion;
 
@@ -28,14 +28,14 @@ public class Vacio implements Entidad {
 
 
 	@Override
-	public Posicion getPosicion() {
+	public Position getPosicion() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public void setPosicion(Posicion p) {
+	public void setPosicion(Position p) {
 		// TODO Auto-generated method stub
 		
 	}

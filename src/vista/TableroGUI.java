@@ -6,26 +6,27 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
-import modelo.SingletonTablero;
-import modelo.Tablero;
+import modelo.SingletonBoard;
+import modelo.Board;
+import modelo.Position;
 public class TableroGUI extends javax.swing.JPanel implements KeyListener{
 
     private int size; 
-    private Tablero tablero;
+    private Board tablero;
+    private CasillasGUI [][] casillas;
     public TableroGUI() {
     	
     	
-    	tablero = (new SingletonTablero()).getInstance();
+    	tablero = (new SingletonBoard()).getInstance();
     	size = tablero.getSize();
         initComponents();
         addKeyListener(this);
         setFocusable(true);
         setLayout(new java.awt.GridLayout(size, size));
-        
-       
-    	CasillasGUI [][] casillas = tablero.getTablero();
+        this.casillas = new CasillasGUI [size][size];
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
+            	casillas[i][j] = new CasillasGUI(tablero.getTile(i, j), new Position(i,j));
             	this.add(casillas[i][j]);
                 
             }

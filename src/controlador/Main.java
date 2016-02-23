@@ -1,8 +1,8 @@
 package controlador;
 
 
-import modelo.SingletonTablero;
-import modelo.Tablero;
+import modelo.SingletonBoard;
+import modelo.Board;
 import vista.VentanaGUI;
 
 
@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String args[]) {
     	
-    	Tablero tablero = (new SingletonTablero()).getInstance();
+    	Board tablero = (new SingletonBoard()).getInstance();
     	tablero.iniciar(10);
     	
         java.awt.EventQueue.invokeLater(new Runnable() {

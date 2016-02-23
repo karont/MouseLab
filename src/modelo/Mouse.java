@@ -5,14 +5,14 @@ import javax.swing.ImageIcon;
 
 import vista.imagenes.CargarImagenes;
 
-public class Raton implements Entidad {
+public class Mouse implements Entitys {
 	
-	private Posicion posicion;
+	private Position posicion;
 	private ImageIcon fondo;
 	private String color;
 	private int size;
 	
-	public Raton(String color, Posicion p, String fondo, int size){
+	public Mouse(String color, Position p, String fondo, int size){
 		this.color = color;
 		this.posicion = p;
 		this.size = size;
@@ -27,12 +27,12 @@ public class Raton implements Entidad {
 	}
 
 	@Override
-	public Posicion getPosicion() {
+	public Position getPosicion() {
 		return posicion;
 	}
 
 	@Override
-	public void setPosicion(Posicion p) {
+	public void setPosicion(Position p) {
 		this.posicion = p;
 	}
 
