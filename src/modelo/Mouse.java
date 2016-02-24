@@ -11,11 +11,13 @@ public class Mouse implements Entitys {
 	private ImageIcon fondo;
 	private String color;
 	private int size;
+	private Tile[][] board;
 	
 	public Mouse(String color, Position p, String fondo, int size){
 		this.color = color;
 		this.posicion = p;
 		this.size = size;
+		
 		cargarFondo(fondo);
 	}
 	public String getColor() {
@@ -25,7 +27,9 @@ public class Mouse implements Entitys {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
+	public void setBoard(Tile[][] board){
+		this.board = board;
+	}
 	@Override
 	public Position getPosicion() {
 		return posicion;
@@ -54,23 +58,45 @@ public class Mouse implements Entitys {
 	}
 	
 	public void moverArriba(){
-		if(posicion.y > 0)
-			posicion.y--;
-		
+		int x = posicion.x;
+		int y = posicion.y;
+		if(y > 0){
+			y--;
+			if(board[x][y].getType() == TileType.VACIO)
+				posicion.y--;
+		}
 	}
 	public void moverAbajo(){
-		if(posicion.y < size)
-			posicion.y++;
+		int x = posicion.x;
+		int y = posicion.y;
+		if(y < size){
+			y++;
+			if(board[x][y].getType() == TileType.VACIO)
+				posicion.y++;
+		}
+			
 		
 	}
 	public void moverIzquierda(){
-		if(posicion.x > 0)
-			posicion.x--;
+		int x = posicion.x;
+		int y = posicion.y;
+		if(x > 0){
+			x--;
+			if(board[x][y].getType() == TileType.VACIO)
+				posicion.x--;
+		}
+			
 		
 	}
 	public void moverDerecha(){
-		if(posicion.y < size)
-			posicion.x++;
+		int x = posicion.x;
+		int y = posicion.y;
+		if(y < size){
+			x++;
+			if(board[x++][y].getType() == TileType.VACIO)
+				posicion.x++;
+		}
+			
 		
 	}
 

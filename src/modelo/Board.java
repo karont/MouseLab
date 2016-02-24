@@ -40,11 +40,15 @@ public class Board {
     	
     	
         
-        tablero[2][2].setType(TileType.OBSTACULO);
+        tablero[0][1].setType(TileType.OBSTACULO);
     	tablero[entidades[0].getPosicion().x][entidades[0].getPosicion().y].addThings(entidades[0]);
     	tablero[entidades[1].getPosicion().x][entidades[1].getPosicion().y].addThings(entidades[1]);
     	tablero[entidades[2].getPosicion().x][entidades[2].getPosicion().y].addThings(entidades[2]);
     	tablero[entidades[3].getPosicion().x][entidades[3].getPosicion().y].addThings(entidades[3]);
+    	
+    	for (Entitys mouse : entidades) {
+			((Mouse)mouse).setBoard(tablero);
+		}
 	}
 	
 	public Tile getTile(int i, int j){
@@ -82,10 +86,9 @@ public class Board {
 	}
 	
 	public void moverRatones(int i, char direccion){
-		/*
+		
 		Mouse r = (Mouse) entidades[i];
-		CasillasGUI c =tablero[r.getPosicion().x][r.getPosicion().y];
-		Position p = new Position(r.getPosicion().x,r.getPosicion().y);
+		tablero[r.getPosicion().x][r.getPosicion().y].removeThings(r);
 		switch(direccion){
     	case 'w':
     		r.moverArriba();
@@ -100,15 +103,17 @@ public class Board {
     		r.moverDerecha();
     		break;
 		}
-		String clase = tablero[r.getPosicion().x][r.getPosicion().y].getEntidad().getClass().getName();
+		
+		tablero[r.getPosicion().x][r.getPosicion().y].addThings(r);
+		/*String clase = tablero[r.getPosicion().x][r.getPosicion().y].getEntidad().getClass().getName();
 		if(clase.equals("modelo.Obstaculo")){
 			r.setPosicion(p);
 		}
 		else{
 			c.setEntidad(new Vacio("vacio.gif"));
 			tablero[r.getPosicion().x][r.getPosicion().y].setEntidad(r);
-		}
-		*/
+		}*/
+		
 	}
 
 	
