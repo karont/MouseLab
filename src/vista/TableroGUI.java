@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
-import modelo.SingletonBoard;
 import modelo.Board;
 import modelo.Position;
 public class TableroGUI extends javax.swing.JPanel implements KeyListener{
@@ -14,10 +13,10 @@ public class TableroGUI extends javax.swing.JPanel implements KeyListener{
     private int size; 
     private Board tablero;
     private CasillasGUI [][] casillas;
-    public TableroGUI() {
+    public TableroGUI(Board tab) {
     	
-    	
-    	tablero = (new SingletonBoard()).getInstance();
+    	this.tablero = tab;
+    	//tablero = (new SingletonBoard()).getInstance();
     	size = tablero.getSize();
         initComponents();
         addKeyListener(this);
@@ -88,7 +87,6 @@ public class TableroGUI extends javax.swing.JPanel implements KeyListener{
     	
     	
     }
-
 
 	@Override
 	public void keyReleased(KeyEvent e) {

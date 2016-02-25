@@ -1,5 +1,5 @@
 package modelo;
-
+/*
 public class SingletonBoard {
 	static private Board instance = null;
 	
@@ -16,3 +16,4 @@ public class SingletonBoard {
 		
 	}
 }
+*/
