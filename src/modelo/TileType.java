@@ -2,10 +2,12 @@ package modelo;
 
 import javax.swing.ImageIcon;
 
-import vista.imagenes.CargarImagenes;
+import vista.imagenes.LoadIcon;
 
 public enum TileType {
-		VACIO("vacio","vacio.gif"),OBSTACULO("obstaculo","obstaculo.gif");
+		EMPTY("empty","empty.gif"),OBSTACLE("obstacle","obstacle.gif"),CHEESE("cheese","cheese.gif"),
+		YELLOWMOUSE("yellowmouse","m_Yellow.gif"),BLUEWMOUSE("bluemouse","m_Blue.gif"),
+		REDMOUSE("redmouse","m_Red.gif"),GREENMOUSE("greenmouse","m_Green.gif");
 		
 		private String name;
 		private ImageIcon background;
@@ -17,8 +19,8 @@ public enum TileType {
 		}
 		
 		
-		private void loadBackgroud(String ruta) {
-			background = CargarImagenes.cargar(ruta);
+		private void loadBackgroud(String route) {
+			background = LoadIcon.load(route);
 			
 		}
 

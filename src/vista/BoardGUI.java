@@ -8,25 +8,25 @@ import javax.swing.JOptionPane;
 
 import modelo.Board;
 import modelo.Position;
-public class TableroGUI extends javax.swing.JPanel implements KeyListener{
+public class BoardGUI extends javax.swing.JPanel implements KeyListener{
 
     private int size; 
-    private Board tablero;
-    private CasillasGUI [][] casillas;
-    public TableroGUI(Board tab) {
+    private Board board;
+    private TileGUI [][] tiling;
+    public BoardGUI(Board tab) {
     	
-    	this.tablero = tab;
+    	this.board = tab;
     	//tablero = (new SingletonBoard()).getInstance();
-    	size = tablero.getSize();
+    	size = board.getSize();
         initComponents();
         addKeyListener(this);
         setFocusable(true);
         setLayout(new java.awt.GridLayout(size, size));
-        this.casillas = new CasillasGUI [size][size];
+        this.tiling = new TileGUI [size][size];
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-            	casillas[i][j] = new CasillasGUI(tablero.getTile(i, j), new Position(i,j));
-            	this.add(casillas[i][j]);
+            	tiling[i][j] = new TileGUI(board.getTile(i, j), new Position(i,j));
+            	this.add(tiling[i][j]);
                 
             }
             
@@ -70,17 +70,19 @@ public class TableroGUI extends javax.swing.JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
     	switch(e.getKeyCode()){
     	case KeyEvent.VK_W:
-    		tablero.moverRatones(0, 'w');
+    		board.moveMouse(0, 'w');
     		break;
     	case KeyEvent.VK_S:
-    		tablero.moverRatones(0, 's');
+    		board.moveMouse(0, 's');
         	break;
     	case KeyEvent.VK_A:
-    		tablero.moverRatones(0, 'a');
+    		board.moveMouse(0, 'a');
         	break;
     	case KeyEvent.VK_D:
-    		tablero.moverRatones(0, 'd');
+    		board.moveMouse(0, 'd');
         	break;
+    	case KeyEvent.VK_SPACE:
+    		board.eatCheese(0);
     	}
     	
     	this.repaint();

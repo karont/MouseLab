@@ -3,7 +3,7 @@ package controlador;
 
 
 import modelo.Board;
-import vista.VentanaGUI;
+import vista.WindowGUI;
 
 
 

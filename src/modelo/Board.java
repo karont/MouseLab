@@ -1,30 +1,26 @@
 package modelo;
 
-import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-
-import vista.CasillasGUI;
-import vista.imagenes.CargarImagenes;
-
 public class Board {
-	private Tile[][] tablero;
-	private Entitys[] entidades;
+	private Tile[][] board;
+	private Entity[] entities;
+	private Cheese cheese;
 	private int size;
 	
 	public Board(){
 	}
 	
-	public void iniciar(int tamaño){
-    	this.size = tamaño;
+	public void start(int s){
+    	this.size = s;
     	
-    	tablero = new Tile[size][size];
+    	board = new Tile[size][size];
 
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-            	if (tablero[i][j] == null){
-            		tablero[i][j] = new Tile(TileType.VACIO);
+            	if (board[i][j] == null){
+            		board[i][j] = new Tile(TileType.EMPTY);
 	                
 	                }
             }           
@@ -32,50 +28,32 @@ public class Board {
         
         
 	}
-	public void setMouse(Entitys[] enti){
-		entidades= enti.clone();
-    	tablero[entidades[0].getPosicion().x][entidades[0].getPosicion().y].addThings(entidades[0]);
-    	tablero[entidades[1].getPosicion().x][entidades[1].getPosicion().y].addThings(entidades[1]);
-    	tablero[entidades[2].getPosicion().x][entidades[2].getPosicion().y].addThings(entidades[2]);
-    	tablero[entidades[3].getPosicion().x][entidades[3].getPosicion().y].addThings(entidades[3]);
-    	
-    	for (Entitys mouse : entidades) {
-			((Mouse)mouse).setBoard(tablero);
+	public void setMouse(Entity[] enti){
+		entities= enti.clone();
+		for(Entity entity : entities){
+			board[entity.getPosition().x][entity.getPosition().y].addThings(entity);
+		}
+    	for (Entity mouse : entities) {
+			((Mouse)mouse).setBoard(board);
 		}
 	}
 	
 	public void setObstaculos(ArrayList<Position> position){
     	for (Position p : position) {
-    		tablero[p.x][p.y].setType(TileType.OBSTACULO);
+    		board[p.x][p.y].setType(TileType.OBSTACLE);
 
 		}
 	}
 	
-	public Tile getTile(int i, int j){
-		return tablero[i][j];
+	public void setCheese(Cheese c){
+		this.cheese = c;
+		board[c.getPosition().x][c.getPosition().y].addThings(c);
 	}
 	
-/*
-	public CasillasGUI[][] getTablero() {
-		return tablero;
+	public Tile getTile(int i, int j){
+		return board[i][j];
 	}
-
-
-	public void setTablero(CasillasGUI[][] tablero) {
-		this.tablero = tablero;
-	}
-
-
-	public Entitys[] getEntidades() {
-		return entidades;
-	}
-
-
-	public void setEntidades(Entitys[] entidades) {
-		this.entidades = entidades;
-	}
-
-	*/
+	
 	public int getSize() {
 		return size;
 	}
@@ -85,35 +63,32 @@ public class Board {
 		this.size = size;
 	}
 	
-	public void moverRatones(int i, char direccion){
+	public void moveMouse(int i, char direction){
 		
-		Mouse r = (Mouse) entidades[i];
-		tablero[r.getPosicion().x][r.getPosicion().y].removeThings(r);
-		switch(direccion){
+		Mouse r = (Mouse) entities[i];
+		board[r.getPosition().x][r.getPosition().y].removeThings(r);
+		switch(direction){
     	case 'w':
-    		r.moverArriba();
+    		r.moveUp();
     		break;
     	case 's':
-    		r.moverAbajo();
+    		r.moverDown();
     		break;
     	case 'a':
-    		r.moverIzquierda();
+    		r.moverLeft();
     		break;
     	case 'd':
-    		r.moverDerecha();
+    		r.moverRight();
     		break;
 		}
 		
-		tablero[r.getPosicion().x][r.getPosicion().y].addThings(r);
-		/*String clase = tablero[r.getPosicion().x][r.getPosicion().y].getEntidad().getClass().getName();
-		if(clase.equals("modelo.Obstaculo")){
-			r.setPosicion(p);
-		}
-		else{
-			c.setEntidad(new Vacio("vacio.gif"));
-			tablero[r.getPosicion().x][r.getPosicion().y].setEntidad(r);
-		}*/
+		board[r.getPosition().x][r.getPosition().y].addThings(r);
 		
+	}
+	
+	public void eatCheese(int i){
+		Mouse r = (Mouse) entities[i];
+		r.eatCheese();
 	}
 
 	

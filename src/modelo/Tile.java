@@ -8,11 +8,11 @@ import javax.swing.ImageIcon;
 
 public class Tile {
 	private TileType type;
-	private List<Entitys> things;
+	private List<Entity> things;
 	
 	public Tile(TileType type){
 		this.type = type;
-		this.things = new ArrayList<Entitys>();
+		this.things = new ArrayList<Entity>();
 	}
 
 	public TileType getType() {
@@ -23,17 +23,17 @@ public class Tile {
 		this.type = type;
 	}
 
-	public List<Entitys> getThings() {
+	public List<Entity> getThings() {
 		return things;
 	}
-	public void addThings(Entitys entity){
+	public void addThings(Entity entity){
 		things.add(entity);
 	}
-	public void removeThings(Entitys entity){
+	public void removeThings(Entity entity){
 		things.remove(entity);
 	}
 
-	public void setThings(ArrayList<Entitys> things) {
+	public void setThings(ArrayList<Entity> things) {
 		this.things = things;
 	}
 	public ImageIcon getBackground(){
@@ -42,8 +42,26 @@ public class Tile {
 			return type.getBackground();
 		}
 		else{
-			return things.get(0).getFondo();
+			return things.get(0).getBackground();
 		}
 		
+	}
+	public Boolean hasCheese(){
+		for(Entity entity: things ){
+			if(entity.getType() == TileType.CHEESE)
+				return true;
+		}
+		return false;
+	}
+	
+	public Boolean eatCheese(){
+		for(Entity entity: things ){
+			if(entity.getType() == TileType.CHEESE){
+				removeThings(entity);
+				entity = null;
+				return true;
+			}
+		}
+		return false;
 	}
 }

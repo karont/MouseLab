@@ -5,18 +5,18 @@ import java.awt.*;
 
 import modelo.Position;
 import modelo.Tile;
-public class CasillasGUI extends javax.swing.JPanel{
+public class TileGUI extends javax.swing.JPanel{
     private Position posicion;
     private Tile tile;
     
    
-    public CasillasGUI(Position p) {	
+    public TileGUI(Position p) {	
     	this.posicion = p;
     	initComponents(); 
     	//this.addMouseListener(this);
     	
     }
-    public CasillasGUI(Tile tile,Position p) {	
+    public TileGUI(Tile tile,Position p) {	
     	this.tile = tile;
     	this.posicion = p;
     	initComponents(); 

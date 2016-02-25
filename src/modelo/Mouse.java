@@ -3,22 +3,23 @@ package modelo;
 import javax.swing.ImageIcon;
 
 
-import vista.imagenes.CargarImagenes;
-
-public class Mouse implements Entitys {
+public class Mouse implements Entity {
 	
-	private Position posicion;
-	private ImageIcon fondo;
+	private Position position;
+	private ImageIcon background;
 	private String color;
 	private int size;
 	private Tile[][] board;
+	private TileType type;
+	private Boolean eatcheese;
 	
-	public Mouse(String color, Position p, String fondo, int size){
+	public Mouse(String color, Position p, int size,TileType type){
 		this.color = color;
-		this.posicion = p;
+		this.position = p;
 		this.size = size;
-		
-		cargarFondo(fondo);
+		this.type = type;
+		this.background = type.getBackground();
+		this.setEatcheese(false);
 	}
 	public String getColor() {
 		return color;
@@ -30,74 +31,87 @@ public class Mouse implements Entitys {
 	public void setBoard(Tile[][] board){
 		this.board = board;
 	}
-	@Override
-	public Position getPosicion() {
-		return posicion;
-	}
-
-	@Override
-	public void setPosicion(Position p) {
-		this.posicion = p;
-	}
-
-	@Override
-	public ImageIcon getFondo() {
-		return fondo;
-	}
-
-	@Override
-	public void setFondo(ImageIcon f) {
-		this.fondo = f;
-
-	}
-
-	@Override
-	public void cargarFondo(String ruta) {
-		fondo = CargarImagenes.cargar(ruta);
-		
-	}
 	
-	public void moverArriba(){
-		int x = posicion.x;
-		int y = posicion.y;
+	public void eatCheese(){
+		if (board[position.x][position.y].hasCheese()){
+			if(board[position.x][position.y].eatCheese()){
+				setEatcheese(true);
+			}
+		}
+	}
+	@Override
+	public Position getPosition() {
+		return position;
+	}
+
+	@Override
+	public void setPosition(Position p) {
+		this.position = p;
+	}
+
+	@Override
+	public ImageIcon getBackground() {
+		return background;
+	}
+
+	@Override
+	public void setBackground(ImageIcon f) {
+		this.background = f;
+
+	}
+
+	
+	public void moveUp(){
+		int x = position.x;
+		int y = position.y;
 		if(y > 0){
 			y--;
-			if(board[x][y].getType() == TileType.VACIO)
-				posicion.y--;
+			if(board[x][y].getType() == TileType.EMPTY)
+				position.y--;
 		}
 	}
-	public void moverAbajo(){
-		int x = posicion.x;
-		int y = posicion.y;
+	public void moverDown(){
+		int x = position.x;
+		int y = position.y;
 		if(y < size){
 			y++;
-			if(board[x][y].getType() == TileType.VACIO)
-				posicion.y++;
+			if(board[x][y].getType() == TileType.EMPTY)
+				position.y++;
 		}
 			
 		
 	}
-	public void moverIzquierda(){
-		int x = posicion.x;
-		int y = posicion.y;
+	public void moverLeft(){
+		int x = position.x;
+		int y = position.y;
 		if(x > 0){
 			x--;
-			if(board[x][y].getType() == TileType.VACIO)
-				posicion.x--;
+			if(board[x][y].getType() == TileType.EMPTY)
+				position.x--;
 		}
 			
 		
 	}
-	public void moverDerecha(){
-		int x = posicion.x;
-		int y = posicion.y;
+	public void moverRight(){
+		int x = position.x;
+		int y = position.y;
 		if(y < size){
 			x++;
-			if(board[x++][y].getType() == TileType.VACIO)
-				posicion.x++;
+			if(board[x++][y].getType() == TileType.EMPTY)
+				position.x++;
 		}
 			
 		
+	}
+	@Override
+	public TileType getType() {
+		return type;
+	}
+	public Boolean getEatcheese() {
+		return eatcheese;
+	}
+	public void setEatcheese(Boolean eatcheese) {
+		this.eatcheese = eatcheese;
 	}
 
 }

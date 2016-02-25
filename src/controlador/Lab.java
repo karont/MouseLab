@@ -1,24 +1,25 @@
 package controlador;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import modelo.Board;
-import modelo.Entitys;
+import modelo.Cheese;
+import modelo.Entity;
 import modelo.Mouse;
 import modelo.Position;
-import vista.VentanaGUI;
+import modelo.TileType;
+import vista.WindowGUI;
 
 public class Lab {
 	private Board board;
 	public Lab(){
 		
 		int size = 10;
-		Entitys[] entidades = new Entitys[4];
-    	entidades[0] = new Mouse("amarillo",new Position(0,0),"r_Amarillo.gif",size);
-    	entidades[1] = new Mouse("rojo",new Position(9,9),"r_Rojo.gif",size);
-    	entidades[2] = new Mouse("azul",new Position(0,9),"r_Azul.gif",size);
-    	entidades[3] = new Mouse("verde",new Position(9,0),"r_Verde.gif",size);
+		Entity[] entidades = new Entity[4];
+    	entidades[0] = new Mouse("amarillo",new Position(0,0),size,TileType.YELLOWMOUSE);
+    	entidades[1] = new Mouse("rojo",new Position(9,9),size,TileType.REDMOUSE);
+    	entidades[2] = new Mouse("azul",new Position(0,9),size,TileType.BLUEWMOUSE);
+    	entidades[3] = new Mouse("verde",new Position(9,0),size,TileType.GREENMOUSE);
     	
 
     	ArrayList<Position> p = new ArrayList<Position>();
@@ -49,14 +50,15 @@ public class Lab {
     	
 		//Board tablero = (new SingletonBoard()).getInstance();
     	board = new Board();
-    	board.iniciar(size);
+    	board.start(size);
     	board.setMouse(entidades);
     	board.setObstaculos(p);
+    	board.setCheese(new Cheese(new Position(4,4)));
     	
 	}
 	
 	public void Iniciar(){
-		new VentanaGUI(board).setVisible(true);
+		new WindowGUI(board).setVisible(true);
 	}
 	public Board getBoard() {
 		return board;

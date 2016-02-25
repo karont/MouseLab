@@ -2,17 +2,17 @@ package vista;
 
 import modelo.Board;
 
-public class VentanaGUI extends javax.swing.JFrame {
-    private TableroGUI tableroGUI;     
+public class WindowGUI extends javax.swing.JFrame {
+    private BoardGUI tableroGUI;     
 
  
     
-    public VentanaGUI(Board tab){
+    public WindowGUI(Board tab){
     	initComponents(tab);
     }
     
 	public void initComponents(Board tab) {
-        tableroGUI = new TableroGUI(tab);
+        tableroGUI = new BoardGUI(tab);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         javax.swing.GroupLayout tableroGUI1Layout = new javax.swing.GroupLayout(tableroGUI);
         tableroGUI.setLayout(tableroGUI1Layout);

@@ -2,10 +2,10 @@ package vista.imagenes;
 
 import javax.swing.ImageIcon;
 
-public  class CargarImagenes {
-	public static ImageIcon cargar(String ruta){
+public  class LoadIcon {
+	public static ImageIcon load(String ruta){
 		
-		java.net.URL localizacion = CargarImagenes.class.getResource(ruta);
+		java.net.URL localizacion = LoadIcon.class.getResource(ruta);
         if (localizacion != null) {
         	return new ImageIcon(localizacion);
         } else {
