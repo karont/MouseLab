@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Board {
 	private Tile[][] board;
-	private Entity[] entities;
+	private Mouse[] mice;
 	private Cheese cheese;
 	private int size;
 	
@@ -28,13 +28,13 @@ public class Board {
         
         
 	}
-	public void setMouse(Entity[] enti){
-		entities= enti.clone();
-		for(Entity entity : entities){
-			board[entity.getPosition().x][entity.getPosition().y].addThings(entity);
+	public void setMouse(Mouse[] m){
+		mice= m.clone();
+		for(Mouse mouse : mice){
+			board[mouse.getPosition().x][mouse.getPosition().y].addThings(mouse);
 		}
-    	for (Entity mouse : entities) {
-			((Mouse)mouse).setBoard(board);
+    	for (Mouse mouse : mice) {
+			mouse.setBoard(board);
 		}
 	}
 	
@@ -65,7 +65,7 @@ public class Board {
 	
 	public void moveMouse(int i, char direction){
 		
-		Mouse r = (Mouse) entities[i];
+		Mouse r = (Mouse) mice[i];
 		board[r.getPosition().x][r.getPosition().y].removeThings(r);
 		switch(direction){
     	case 'w':
@@ -87,7 +87,7 @@ public class Board {
 	}
 	
 	public void eatCheese(int i){
-		Mouse r = (Mouse) entities[i];
+		Mouse r = (Mouse) mice[i];
 		r.eatCheese();
 	}
 

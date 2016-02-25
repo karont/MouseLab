@@ -54,11 +54,6 @@ public class Mouse implements Entity {
 		return background;
 	}
 
-	@Override
-	public void setBackground(ImageIcon f) {
-		this.background = f;
-
-	}
 
 	
 	public void moveUp(){

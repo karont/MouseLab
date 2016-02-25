@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import modelo.Board;
 import modelo.Cheese;
-import modelo.Entity;
 import modelo.Mouse;
 import modelo.Position;
 import modelo.TileType;
@@ -15,11 +14,11 @@ public class Lab {
 	public Lab(){
 		
 		int size = 10;
-		Entity[] entidades = new Entity[4];
-    	entidades[0] = new Mouse("amarillo",new Position(0,0),size,TileType.YELLOWMOUSE);
-    	entidades[1] = new Mouse("rojo",new Position(9,9),size,TileType.REDMOUSE);
-    	entidades[2] = new Mouse("azul",new Position(0,9),size,TileType.BLUEWMOUSE);
-    	entidades[3] = new Mouse("verde",new Position(9,0),size,TileType.GREENMOUSE);
+		Mouse[] mice = new Mouse[4];
+    	mice[0] = new Mouse("amarillo",new Position(0,0),size,TileType.YELLOWMOUSE);
+    	mice[1] = new Mouse("rojo",new Position(9,9),size,TileType.REDMOUSE);
+    	mice[2] = new Mouse("azul",new Position(0,9),size,TileType.BLUEWMOUSE);
+    	mice[3] = new Mouse("verde",new Position(9,0),size,TileType.GREENMOUSE);
     	
 
     	ArrayList<Position> p = new ArrayList<Position>();
@@ -51,7 +50,7 @@ public class Lab {
 		//Board tablero = (new SingletonBoard()).getInstance();
     	board = new Board();
     	board.start(size);
-    	board.setMouse(entidades);
+    	board.setMouse(mice);
     	board.setObstaculos(p);
     	board.setCheese(new Cheese(new Position(4,4)));
     	

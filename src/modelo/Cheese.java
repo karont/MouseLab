@@ -30,11 +30,7 @@ public class Cheese implements Entity {
 		return background;
 	}
 
-	@Override
-	public void setBackground(ImageIcon f) {
-		this.background = f;
 
-	}
 	@Override
 	public TileType getType() {
 		return type;
