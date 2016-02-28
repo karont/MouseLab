@@ -1,4 +1,4 @@
-package vista.imagenes;
+package view.images;
 
 import javax.swing.ImageIcon;
 

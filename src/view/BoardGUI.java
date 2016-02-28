@@ -1,10 +1,9 @@
-package vista;
+package view;
 
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JOptionPane;
 
 import modelo.Board;
 import modelo.Position;
@@ -71,19 +70,25 @@ public class BoardGUI extends javax.swing.JPanel implements KeyListener{
     	switch(e.getKeyCode()){
     	case KeyEvent.VK_W:
     		board.moveMouse(0, 'w');
+    		board.moveMices();
     		break;
     	case KeyEvent.VK_S:
     		board.moveMouse(0, 's');
+    		board.moveMices();
         	break;
     	case KeyEvent.VK_A:
     		board.moveMouse(0, 'a');
+    		board.moveMices();
         	break;
     	case KeyEvent.VK_D:
     		board.moveMouse(0, 'd');
+    		board.moveMices();
         	break;
     	case KeyEvent.VK_SPACE:
     		board.eatCheese(0);
+    		board.moveMices();
     	}
+    	
     	
     	this.repaint();
     	

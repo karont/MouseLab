@@ -1,6 +1,9 @@
-package modelo;
+package modelo.entity;
 
 import javax.swing.ImageIcon;
+
+import modelo.Position;
+import modelo.TileType;
 
 public interface Entity {
 	public Position getPosition();

@@ -3,6 +3,11 @@ package modelo;
 
 import java.util.ArrayList;
 
+import modelo.artificialinteligent.AIType;
+import modelo.entity.Cheese;
+import modelo.entity.Mouse;
+import modelo.entity.Shoji;
+
 public class Board {
 	private Tile[][] board;
 	private Mouse[] mice;
@@ -38,7 +43,7 @@ public class Board {
 		}
 	}
 	
-	public void setObstaculos(ArrayList<Position> position){
+	public void setObstacles(ArrayList<Position> position){
     	for (Position p : position) {
     		board[p.x][p.y].setType(TileType.OBSTACLE);
 
@@ -48,6 +53,13 @@ public class Board {
 	public void setCheese(Cheese c){
 		this.cheese = c;
 		board[c.getPosition().x][c.getPosition().y].addThings(c);
+	}
+	
+	public void setShojis(ArrayList<Position> position){
+    	for (Position p : position) {
+    		board[p.x][p.y].addThings(new Shoji(p));
+
+		}
 	}
 	
 	public Tile getTile(int i, int j){
@@ -66,24 +78,30 @@ public class Board {
 	public void moveMouse(int i, char direction){
 		
 		Mouse r = (Mouse) mice[i];
-		board[r.getPosition().x][r.getPosition().y].removeThings(r);
 		switch(direction){
     	case 'w':
     		r.moveUp();
     		break;
     	case 's':
-    		r.moverDown();
+    		r.moveDown();
     		break;
     	case 'a':
-    		r.moverLeft();
+    		r.moveLeft();
     		break;
     	case 'd':
-    		r.moverRight();
+    		r.moveRight();
     		break;
 		}
 		
-		board[r.getPosition().x][r.getPosition().y].addThings(r);
 		
+	}
+	
+	public void moveMices(){
+		for (Mouse m : mice) {
+			if(m.getAI() == AIType.RANDOM)
+				m.getAI().getAI().run(m);
+			
+		}
 	}
 	
 	public void eatCheese(int i){

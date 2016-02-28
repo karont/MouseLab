@@ -1,18 +1,24 @@
-package modelo;
+package modelo.entity;
 
 import javax.swing.ImageIcon;
 
+import modelo.Position;
+import modelo.TileType;
 
-public class Cheese implements Entity {
-
+public class Shoji implements Entity {
+	
 	private Position position;
 	private TileType type;
 	private ImageIcon background;
 	
-	
-	public Cheese(Position p){
+	public Shoji(Position p){	
 		this.position=p;
-		this.type = TileType.CHEESE;
+		this.type = TileType.SHOJI;
+		this.background = this.type.getBackground();
+	}
+	
+	public void breakShoji(){
+		this.type = TileType.BROKENSHOJI;
 		this.background = this.type.getBackground();
 	}
 	@Override

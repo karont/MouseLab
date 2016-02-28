@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import modelo.entity.Entity;
+
 
 public class Tile {
 	private TileType type;

@@ -1,4 +1,4 @@
-package vista;
+package view;
 
 import modelo.Board;
 

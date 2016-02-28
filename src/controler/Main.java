@@ -1,9 +1,9 @@
-package controlador;
+package controler;
 
 
 
 import modelo.Board;
-import vista.WindowGUI;
+import view.WindowGUI;
 
 
 
