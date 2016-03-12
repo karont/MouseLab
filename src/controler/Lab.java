@@ -2,7 +2,7 @@ package controler;
 
 import java.util.ArrayList;
 
-import modelo.Board;
+import modelo.BoardControler;
 import modelo.Position;
 import modelo.TileType;
 import modelo.artificialinteligent.AIType;
@@ -11,15 +11,17 @@ import modelo.entity.Mouse;
 import view.WindowGUI;
 
 public class Lab {
-	private Board board;
+	private BoardControler boardcontroler;
 	public Lab(){
 		
-		int size = 10;
+		int width = 10;
+		int height = 10;
+		
 		Mouse[] mice = new Mouse[4];
-    	mice[0] = new Mouse("amarillo",new Position(0,0),size,TileType.YELLOWMOUSE,AIType.HUMAN);
-    	mice[1] = new Mouse("rojo",new Position(9,9),size,TileType.REDMOUSE,AIType.RANDOM);
-    	mice[2] = new Mouse("azul",new Position(0,9),size,TileType.BLUEWMOUSE,AIType.RANDOM);
-    	mice[3] = new Mouse("verde",new Position(9,0),size,TileType.GREENMOUSE,AIType.RANDOM);
+    	mice[0] = new Mouse("amarillo",new Position(0,0),TileType.YELLOWMOUSE,AIType.HUMAN);
+    	mice[1] = new Mouse("rojo",new Position(9,9),TileType.REDMOUSE,AIType.RANDOM);
+    	mice[2] = new Mouse("azul",new Position(0,9),TileType.BLUEWMOUSE,AIType.RANDOM);
+    	mice[3] = new Mouse("verde",new Position(9,0),TileType.GREENMOUSE,AIType.RANDOM);
     	
 
     	ArrayList<Position> obstacles = new ArrayList<Position>();
@@ -61,25 +63,25 @@ public class Lab {
     	shojis.add(new Position(6,7));
     	
 		//Board tablero = (new SingletonBoard()).getInstance();
-    	board = new Board();
-    	board.start(size);
-    	board.setMouse(mice);
-    	board.setObstacles(obstacles);
-    	board.setCheese(new Cheese(new Position(4,5)));
-    	board.setShojis(shojis);
+    	boardcontroler = new BoardControler();
+    	boardcontroler.start(width,height);
+    	boardcontroler.setMouse(mice);
+    	boardcontroler.setObstacles(obstacles);
+    	boardcontroler.setCheese(new Cheese(new Position(4,5)));
+    	boardcontroler.setShojis(shojis);
     	
     	
     	
 	}
 	
 	public void Iniciar(){
-		new WindowGUI(board).setVisible(true);
+		new WindowGUI(boardcontroler).setVisible(true);
 	}
-	public Board getBoard() {
-		return board;
+	public BoardControler getBoard() {
+		return boardcontroler;
 	}
-	public void setBoard(Board board) {
-		this.board = board;
+	public void setBoard(BoardControler board) {
+		this.boardcontroler = board;
 	}
 	
 }

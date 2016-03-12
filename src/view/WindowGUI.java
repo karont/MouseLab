@@ -1,17 +1,17 @@
 package view;
 
-import modelo.Board;
+import modelo.BoardControler;
 
 public class WindowGUI extends javax.swing.JFrame {
     private BoardGUI tableroGUI;     
 
  
     
-    public WindowGUI(Board tab){
+    public WindowGUI(BoardControler tab){
     	initComponents(tab);
     }
     
-	public void initComponents(Board tab) {
+	public void initComponents(BoardControler tab) {
         tableroGUI = new BoardGUI(tab);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         javax.swing.GroupLayout tableroGUI1Layout = new javax.swing.GroupLayout(tableroGUI);

@@ -1,113 +1,53 @@
 package modelo;
 
-
-import java.util.ArrayList;
-
-import modelo.artificialinteligent.AIType;
-import modelo.entity.Cheese;
-import modelo.entity.Mouse;
-import modelo.entity.Shoji;
-
 public class Board {
 	private Tile[][] board;
-	private Mouse[] mice;
-	private Cheese cheese;
-	private int size;
+	int width;
+	int height;
 	
 	public Board(){
 	}
-	
-	public void start(int s){
-    	this.size = s;
-    	
-    	board = new Tile[size][size];
+	public Board(int w,int h){
+		this.width = w;
+		this.height = h;
+		
+		board = new Tile[w][h];
 
-        for (int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){
+        for (int i = 0; i < w; i++){
+            for (int j = 0; j < h; j++){
             	if (board[i][j] == null){
             		board[i][j] = new Tile(TileType.EMPTY);
 	                
 	                }
             }           
         }
-        
-        
 	}
-	public void setMouse(Mouse[] m){
-		mice= m.clone();
-		for(Mouse mouse : mice){
-			board[mouse.getPosition().x][mouse.getPosition().y].addThings(mouse);
-		}
-    	for (Mouse mouse : mice) {
-			mouse.setBoard(board);
-		}
+	public int getWidth() {
+		return width;
 	}
-	
-	public void setObstacles(ArrayList<Position> position){
-    	for (Position p : position) {
-    		board[p.x][p.y].setType(TileType.OBSTACLE);
-
-		}
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public void setBoard(Tile[][] b){
+		this.board = b;
 	}
 	
-	public void setCheese(Cheese c){
-		this.cheese = c;
-		board[c.getPosition().x][c.getPosition().y].addThings(c);
+	public Tile getTile(int x, int y){
+		return board[x][y];
 	}
-	
-	public void setShojis(ArrayList<Position> position){
-    	for (Position p : position) {
-    		board[p.x][p.y].addThings(new Shoji(p));
-
-		}
-	}
-	
-	public Tile getTile(int i, int j){
-		return board[i][j];
-	}
-	
-	public int getSize() {
-		return size;
-	}
-	
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-	
-	public void moveMouse(int i, char direction){
+	public Board clone(){
+		Board b= new  Board();
+		b.setWidth(this.width);
+		b.setHeight(this.height);
+		b.setBoard(this.board.clone());
 		
-		Mouse r = (Mouse) mice[i];
-		switch(direction){
-    	case 'w':
-    		r.moveUp();
-    		break;
-    	case 's':
-    		r.moveDown();
-    		break;
-    	case 'a':
-    		r.moveLeft();
-    		break;
-    	case 'd':
-    		r.moveRight();
-    		break;
-		}
-		
+		return b;
 		
 	}
-	
-	public void moveMices(){
-		for (Mouse m : mice) {
-			if(m.getAI() == AIType.RANDOM)
-				m.getAI().getAI().run(m);
-			
-		}
-	}
-	
-	public void eatCheese(int i){
-		Mouse r = (Mouse) mice[i];
-		r.eatCheese();
-	}
-
-	
 }

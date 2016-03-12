@@ -5,26 +5,29 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-import modelo.Board;
+import modelo.BoardControler;
 import modelo.Position;
 public class BoardGUI extends javax.swing.JPanel implements KeyListener{
 
-    private int size; 
-    private Board board;
+    private int width;
+    private int height;
+    private BoardControler boardcontroler;
     private TileGUI [][] tiling;
-    public BoardGUI(Board tab) {
+    public BoardGUI(BoardControler tab) {
     	
-    	this.board = tab;
+    	this.boardcontroler = tab;
     	//tablero = (new SingletonBoard()).getInstance();
-    	size = board.getSize();
+    	width = boardcontroler.getWidth();
+    	height = boardcontroler.getHeight();
+    	
         initComponents();
         addKeyListener(this);
         setFocusable(true);
-        setLayout(new java.awt.GridLayout(size, size));
-        this.tiling = new TileGUI [size][size];
-        for (int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){
-            	tiling[i][j] = new TileGUI(board.getTile(i, j), new Position(i,j));
+        setLayout(new java.awt.GridLayout(width, height));
+        this.tiling = new TileGUI [width][height];
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+            	tiling[i][j] = new TileGUI(boardcontroler.getTile(i, j), new Position(i,j));
             	this.add(tiling[i][j]);
                 
             }
@@ -61,7 +64,7 @@ public class BoardGUI extends javax.swing.JPanel implements KeyListener{
         setLayout(null);
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setPreferredSize(new java.awt.Dimension(size*35+1, size*35+1));
+        setPreferredSize(new java.awt.Dimension(width*35+1, height*35+1));
     }
 
 
@@ -69,24 +72,24 @@ public class BoardGUI extends javax.swing.JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
     	switch(e.getKeyCode()){
     	case KeyEvent.VK_W:
-    		board.moveMouse(0, 'w');
-    		board.moveMices();
+    		boardcontroler.moveMouse(0, 'w');
+    		boardcontroler.moveMices();
     		break;
     	case KeyEvent.VK_S:
-    		board.moveMouse(0, 's');
-    		board.moveMices();
+    		boardcontroler.moveMouse(0, 's');
+    		boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_A:
-    		board.moveMouse(0, 'a');
-    		board.moveMices();
+    		boardcontroler.moveMouse(0, 'a');
+    		boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_D:
-    		board.moveMouse(0, 'd');
-    		board.moveMices();
+    		boardcontroler.moveMouse(0, 'd');
+    		boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_SPACE:
-    		board.eatCheese(0);
-    		board.moveMices();
+    		boardcontroler.eatCheese(0);
+    		boardcontroler.moveMices();
     	}
     	
     	
