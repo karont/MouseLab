@@ -12,16 +12,34 @@ import view.WindowGUI;
 
 public class Lab {
 	private BoardControler boardcontroler;
-	public Lab(){
+	
+	private int width;
+	private int height;
+	private int turns;
+	private AIType myellow;
+	private AIType mred;
+	private AIType mblue;
+	private AIType mgreen;
+	
+	public Lab(int width, int height, int turns, AIType my, AIType mr, AIType mb, AIType mg){
 		
-		int width = 10;
-		int height = 10;
+		this.width = width;
+		this.height = height;
+		this.turns = turns;
+		this.myellow = my;
+		this.mred = mr;
+		this.mblue = mb;
+		this.mgreen = mg;
 		
+	}
+	
+	public void start(){
+
 		Mouse[] mice = new Mouse[4];
-    	mice[0] = new Mouse("amarillo",new Position(0,0),TileType.YELLOWMOUSE,AIType.HUMAN);
-    	mice[1] = new Mouse("rojo",new Position(9,9),TileType.REDMOUSE,AIType.RANDOM);
-    	mice[2] = new Mouse("azul",new Position(0,9),TileType.BLUEWMOUSE,AIType.RANDOM);
-    	mice[3] = new Mouse("verde",new Position(9,0),TileType.GREENMOUSE,AIType.RANDOM);
+    	mice[0] = new Mouse("yellow",new Position(0,0),TileType.YELLOWMOUSE,myellow);
+    	mice[1] = new Mouse("red",new Position(9,9),TileType.REDMOUSE,mred);
+    	mice[2] = new Mouse("blue",new Position(0,9),TileType.BLUEWMOUSE,mblue);
+    	mice[3] = new Mouse("green",new Position(9,0),TileType.GREENMOUSE,mgreen);
     	
 
     	ArrayList<Position> obstacles = new ArrayList<Position>();
@@ -64,7 +82,7 @@ public class Lab {
     	
 		//Board tablero = (new SingletonBoard()).getInstance();
     	boardcontroler = new BoardControler();
-    	boardcontroler.start(width,height);
+    	boardcontroler.start(width,height,turns);
     	boardcontroler.setMouse(mice);
     	boardcontroler.setObstacles(obstacles);
     	boardcontroler.setCheese(new Cheese(new Position(4,5)));
@@ -72,9 +90,6 @@ public class Lab {
     	
     	
     	
-	}
-	
-	public void Iniciar(){
 		new WindowGUI(boardcontroler).setVisible(true);
 	}
 	public BoardControler getBoard() {

@@ -13,12 +13,12 @@ public class Main {
     public static void main(String args[]) {
     	//prueba p = new prueba();
     	//p.setVisible(true);
-    	//WindowConfig window = new  WindowConfig();
+    	WindowConfig window = new  WindowConfig();
     	
-    	//window.setVisible(true);
+    	window.setVisible(true);
     	
-    	Lab lab =  new Lab();
-    	lab.Iniciar();
+    	//Lab lab =  new Lab();
+    	//lab.start();
        /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaGUI().setVisible(true);

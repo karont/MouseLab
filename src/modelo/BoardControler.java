@@ -12,12 +12,14 @@ public class BoardControler {
 	private Board board;
 	private Mouse[] mice;
 	private Cheese cheese;
+	private int turns;
 
 	
 	public BoardControler(){
 	}
 	
-	public void start(int w,int h){ 	
+	public void start(int w,int h, int turns){
+		this.turns = turns;
         board = new Board(w,h);   
 	}
 	
@@ -89,6 +91,7 @@ public class BoardControler {
 				m.getAI().getAI().run(m);
 			
 		}
+		
 	}
 	
 	public void eatCheese(int i){
