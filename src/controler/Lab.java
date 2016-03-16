@@ -20,6 +20,7 @@ public class Lab {
 	private AIType mred;
 	private AIType mblue;
 	private AIType mgreen;
+	private WindowGUI windowgui;
 	
 	public Lab(int width, int height, int turns, AIType my, AIType mr, AIType mb, AIType mg){
 		
@@ -31,10 +32,6 @@ public class Lab {
 		this.mblue = mb;
 		this.mgreen = mg;
 		
-	}
-	
-	public void start(){
-
 		Mouse[] mice = new Mouse[4];
     	mice[0] = new Mouse("yellow",new Position(0,0),TileType.YELLOWMOUSE,myellow);
     	mice[1] = new Mouse("red",new Position(9,9),TileType.REDMOUSE,mred);
@@ -89,8 +86,27 @@ public class Lab {
     	boardcontroler.setShojis(shojis);
     	
     	
-    	
-		new WindowGUI(boardcontroler).setVisible(true);
+
+		windowgui = new WindowGUI(boardcontroler);
+		
+	}
+	
+	public void start(){
+
+		
+		windowgui.setVisible(true);
+		/*windowgui.setEnableBoard(false);
+		for(int i = 0; i<10;i++){
+			if(i%2==0){
+				windowgui.setEnabled(true);
+			}
+			else{
+				windowgui.setEnabled(false);
+				
+			}
+			System.out.println(i);
+		
+		}*/
 	}
 	public BoardControler getBoard() {
 		return boardcontroler;
