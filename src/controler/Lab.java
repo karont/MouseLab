@@ -21,6 +21,7 @@ public class Lab {
 	private AIType mblue;
 	private AIType mgreen;
 	private WindowGUI windowgui;
+	private Mouse[] mice;
 	
 	public Lab(int width, int height, int turns, AIType my, AIType mr, AIType mb, AIType mg){
 		
@@ -32,7 +33,7 @@ public class Lab {
 		this.mblue = mb;
 		this.mgreen = mg;
 		
-		Mouse[] mice = new Mouse[4];
+		mice = new Mouse[4];
     	mice[0] = new Mouse("yellow",new Position(0,0),TileType.YELLOWMOUSE,myellow);
     	mice[1] = new Mouse("red",new Position(9,9),TileType.REDMOUSE,mred);
     	mice[2] = new Mouse("blue",new Position(0,9),TileType.BLUEWMOUSE,mblue);
@@ -94,7 +95,12 @@ public class Lab {
 	public void start(){
 
 		
-		windowgui.setVisible(true);
+		for (Mouse m : mice) {
+			m.getAI().oberserver();
+			m.getAI().dameAccion();
+			m.getAI().ultimaAccion();
+			m.cambiarEstado();	
+		}
 		/*windowgui.setEnableBoard(false);
 		for(int i = 0; i<10;i++){
 			if(i%2==0){

@@ -5,5 +5,7 @@ import modelo.entity.Mouse;
 public interface AI {
 	
 	public void run(Mouse m);
-	
+	public void oberserver();
+	public void dameAccion();
+	public void  ultimaAccion();
 }
