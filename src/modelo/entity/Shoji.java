@@ -4,8 +4,9 @@ import javax.swing.ImageIcon;
 
 import modelo.Position;
 import modelo.TileType;
+import modelo.interfaces.IEntity;
 
-public class Shoji implements Entity {
+public class Shoji implements IEntity {
 	
 	private Position position;
 	private TileType type;
@@ -26,7 +27,6 @@ public class Shoji implements Entity {
 		return position;
 	}
 
-	@Override
 	public void setPosition(Position p) {
 		this.position = p;
 	}

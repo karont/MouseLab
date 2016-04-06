@@ -5,9 +5,15 @@ import javax.swing.ImageIcon;
 import view.images.LoadIcon;
 
 public enum TileType {
-		EMPTY("empty","empty.gif"),OBSTACLE("obstacle","obstacle.gif"),CHEESE("cheese","cheese.gif"),
-		YELLOWMOUSE("yellowmouse","m_Yellow.gif"),BLUEWMOUSE("bluemouse","m_Blue.gif"),
-		REDMOUSE("redmouse","m_Red.gif"),GREENMOUSE("greenmouse","m_Green.gif"),SHOJI("shoji","shoji.gif"),BROKENSHOJI("brokenshoji","broken_shoji.gif");
+		EMPTY("empty","empty.gif"),
+		OBSTACLE("obstacle","obstacle.gif"),
+		CHEESE("cheese","cheese.gif"),
+		YELLOWMOUSE("yellowmouse","m_Yellow.gif"),
+		BLUEWMOUSE("bluemouse","m_Blue.gif"),
+		REDMOUSE("redmouse","m_Red.gif"),
+		GREENMOUSE("greenmouse","m_Green.gif"),
+		SHOJI("shoji","shoji.gif"),
+		BROKENSHOJI("brokenshoji","broken_shoji.gif");
 		
 		private String name;
 		private ImageIcon background;

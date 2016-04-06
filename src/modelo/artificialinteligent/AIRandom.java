@@ -35,4 +35,22 @@ public class AIRandom implements AI {
 		}
 
 	}
+
+	@Override
+	public void oberserver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dameAccion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ultimaAccion() {
+		// TODO Auto-generated method stub
+		
+	}
 }

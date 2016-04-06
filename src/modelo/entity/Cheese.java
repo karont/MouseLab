@@ -4,9 +4,10 @@ import javax.swing.ImageIcon;
 
 import modelo.Position;
 import modelo.TileType;
+import modelo.interfaces.IEntity;
 
 
-public class Cheese implements Entity {
+public class Cheese implements IEntity {
 
 	private Position position;
 	private TileType type;
@@ -23,7 +24,6 @@ public class Cheese implements Entity {
 		return position;
 	}
 
-	@Override
 	public void setPosition(Position p) {
 		this.position = p;
 	}

@@ -5,16 +5,26 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-import modelo.entity.Entity;
+import modelo.interfaces.IEntity;
+import modelo.interfaces.ITile;
 
 
-public class Tile {
+public class Tile implements ITile{
 	private TileType type;
-	private List<Entity> things;
+	private List<IEntity> things;
+	private Position position;
 	
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
 	public Tile(TileType type){
 		this.type = type;
-		this.things = new ArrayList<Entity>();
+		this.things = new ArrayList<IEntity>();
 	}
 
 	public TileType getType() {
@@ -25,17 +35,17 @@ public class Tile {
 		this.type = type;
 	}
 
-	public List<Entity> getThings() {
+	public List<IEntity> getThings() {
 		return things;
 	}
-	public void addThings(Entity entity){
+	public void addThings(IEntity entity){
 		things.add(entity);
 	}
-	public void removeThings(Entity entity){
+	public void removeThings(IEntity entity){
 		things.remove(entity);
 	}
 
-	public void setThings(ArrayList<Entity> things) {
+	public void setThings(ArrayList<IEntity> things) {
 		this.things = things;
 	}
 	public ImageIcon getBackground(){
@@ -49,7 +59,7 @@ public class Tile {
 		
 	}
 	public Boolean hasCheese(){
-		for(Entity entity: things ){
+		for(IEntity entity: things ){
 			if(entity.getType() == TileType.CHEESE)
 				return true;
 		}
@@ -57,7 +67,7 @@ public class Tile {
 	}
 	
 	public Boolean eatCheese(){
-		for(Entity entity: things ){
+		for(IEntity entity: things ){
 			if(entity.getType() == TileType.CHEESE){
 				removeThings(entity);
 				entity = null;

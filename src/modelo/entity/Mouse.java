@@ -10,9 +10,10 @@ import modelo.Position;
 import modelo.TileType;
 import modelo.Tile;
 import modelo.artificialinteligent.AIType;
+import modelo.interfaces.IEntity;
 
 
-public class Mouse implements Entity {
+public class Mouse implements IEntity {
 	
 	private Position position;
 	private ImageIcon background;
@@ -59,7 +60,6 @@ public class Mouse implements Entity {
 		return position;
 	}
 
-	@Override
 	public void setPosition(Position p) {
 		this.position = p;
 	}
@@ -140,8 +140,8 @@ public class Mouse implements Entity {
 		this.eatcheese = eatcheese;
 	}
 	
-	public void breakChoji(List<Entity> list){
-		for (Entity entity : list) {
+	public void breakChoji(List<IEntity> list){
+		for (IEntity entity : list) {
 			if(entity.getType() == TileType.SHOJI)
 				((Shoji) entity).breakShoji();
 			

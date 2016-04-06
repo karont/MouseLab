@@ -1,7 +1,10 @@
 package modelo;
 
-public class Board {
+import modelo.interfaces.IBoard;
+
+public class Board implements IBoard{
 	private Tile[][] board;
+	private Boolean cheese;
 	int width;
 	int height;
 	
@@ -10,6 +13,7 @@ public class Board {
 	public Board(int w,int h){
 		this.width = w;
 		this.height = h;
+		
 		
 		board = new Tile[w][h];
 
@@ -50,4 +54,8 @@ public class Board {
 		return b;
 		
 	}
+	public Boolean hasCheese() {
+		return cheese;
+	}
+
 }

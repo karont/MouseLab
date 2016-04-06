@@ -94,12 +94,11 @@ public class Lab {
 	
 	public void start(){
 
-		
 		for (Mouse m : mice) {
-			m.getAI().oberserver();
+			/*m.getAI().observer();
 			m.getAI().dameAccion();
 			m.getAI().ultimaAccion();
-			m.cambiarEstado();	
+			m.cambiarEstado();*/	
 		}
 		/*windowgui.setEnableBoard(false);
 		for(int i = 0; i<10;i++){
