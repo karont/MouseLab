@@ -26,7 +26,7 @@ public class BoardControler {
 	public void setMouse(Mouse[] m){
 		mice= m.clone();
 		for(Mouse mouse : mice){
-			board.getTile(mouse.getPosition().x,mouse.getPosition().y).addThings(mouse);
+			board.getTile(mouse.getPosition().getX(),mouse.getPosition().getY()).addThings(mouse);
 		}
     	for (Mouse mouse : mice) {
 			mouse.setBoard(board);
@@ -35,19 +35,19 @@ public class BoardControler {
 	
 	public void setObstacles(ArrayList<Position> position){
     	for (Position p : position) {
-    		board.getTile(p.x,p.y).setType(TileType.OBSTACLE);
+    		board.getTile(p.getX(),p.getY()).setType(TileType.OBSTACLE);
 
 		}
 	}
 	
 	public void setCheese(Cheese c){
 		this.cheese = c;
-		board.getTile(c.getPosition().x,c.getPosition().y).addThings(c);
+		board.getTile(c.getPosition().getX(),c.getPosition().getY()).addThings(c);
 	}
 	
 	public void setShojis(ArrayList<Position> position){
     	for (Position p : position) {
-    		board.getTile(p.x,p.y).addThings(new Shoji(p));
+    		board.getTile(p.getX(),p.getY()).addThings(new Shoji(p));
 
 		}
 	}

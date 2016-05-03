@@ -57,5 +57,10 @@ public class Board implements IBoard{
 	public Boolean hasCheese() {
 		return cheese;
 	}
+	@Override
+	public boolean hasCheesse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

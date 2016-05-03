@@ -36,7 +36,7 @@ public class TileGUI extends javax.swing.JPanel{
 
                           
     private void initComponents() {
-    	this.setBounds((posicion.x * 35)+1, (posicion.y* 35)+1, 34, 34);
+    	this.setBounds((posicion.getX() * 35)+1, (posicion.getY()* 35)+1, 34, 34);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

@@ -37,7 +37,7 @@ public class AIRandom implements AI {
 	}
 
 	@Override
-	public void oberserver() {
+	public void observer() {
 		// TODO Auto-generated method stub
 		
 	}

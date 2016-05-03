@@ -5,11 +5,12 @@ import javax.swing.ImageIcon;
 import modelo.Position;
 import modelo.TileType;
 import modelo.interfaces.IEntity;
+import modelo.interfaces.IPosition;
 
 
 public class Cheese implements IEntity {
 
-	private Position position;
+	private IPosition position;
 	private TileType type;
 	private ImageIcon background;
 	
@@ -20,7 +21,7 @@ public class Cheese implements IEntity {
 		this.background = this.type.getBackground();
 	}
 	@Override
-	public Position getPosition() {
+	public IPosition getPosition() {
 		return position;
 	}
 

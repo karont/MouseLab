@@ -11,6 +11,7 @@ import modelo.TileType;
 import modelo.Tile;
 import modelo.artificialinteligent.AIType;
 import modelo.interfaces.IEntity;
+import modelo.interfaces.IPosition;
 
 
 public class Mouse implements IEntity {
@@ -49,14 +50,14 @@ public class Mouse implements IEntity {
 	}
 	
 	public void eatCheese(){
-		if (board.getTile(position.x,position.y).hasCheese()){
-			if(board.getTile(position.x,position.y).eatCheese()){
+		if (board.getTile(position.getX(),position.getY()).hasCheese()){
+			if(board.getTile(position.getX(),position.getY()).eatCheese()){
 				setEatcheese(true);
 			}
 		}
 	}
 	@Override
-	public Position getPosition() {
+	public IPosition getPosition() {
 		return position;
 	}
 
@@ -72,60 +73,60 @@ public class Mouse implements IEntity {
 
 	
 	public void moveUp(){
-		int x = position.x;
-		int y = position.y;
-		board.getTile(position.x,position.y).removeThings(this);
+		int x = position.getX();
+		int y = position.getY();
+		board.getTile(position.getX(),position.getY()).removeThings(this);
 		if(y > 0){
 			y--;
 			if(board.getTile(x,y).getType() == TileType.EMPTY){
-				position.y--;
+				position.setY(y);
 				breakChoji(board.getTile(x,y).getThings());
 			}
 		}
-		board.getTile(position.x,position.y).addThings(this);		
+		board.getTile(position.getX(),position.getY()).addThings(this);		
 	}
 	public void moveDown(){
-		int x = position.x;
-		int y = position.y;
-		board.getTile(position.x,position.y).removeThings(this);
+		int x = position.getX();
+		int y = position.getY();
+		board.getTile(position.getX(),position.getY()).removeThings(this);
 		if(y < board.getHeight()-1){
 			y++;
 			if(board.getTile(x,y).getType() == TileType.EMPTY){
-				position.y++;
+				position.setY(y);
 				breakChoji(board.getTile(x,y).getThings());
 				
 			}
 		}
-		board.getTile(position.x,position.y).addThings(this);		
+		board.getTile(position.getX(),position.getY()).addThings(this);		
 		
 	}
 	public void moveLeft(){
-		int x = position.x;
-		int y = position.y;
-		board.getTile(position.x,position.y).removeThings(this);
+		int x = position.getX();
+		int y = position.getY();
+		board.getTile(position.getX(),position.getY()).removeThings(this);
 		if(x > 0){
 			x--;
 			if(board.getTile(x,y).getType() == TileType.EMPTY){
-				position.x--;
+				position.setX(x);
 				breakChoji(board.getTile(x,y).getThings());
 			}
 		}
-		board.getTile(position.x,position.y).addThings(this);	
+		board.getTile(position.getX(),position.getY()).addThings(this);	
 			
 		
 	}
 	public void moveRight(){
-		int x = position.x;
-		int y = position.y;
-		board.getTile(position.x,position.y).removeThings(this);
+		int x = position.getX();
+		int y = position.getY();
+		board.getTile(position.getX(),position.getY()).removeThings(this);
 		if(x < board.getWidth()-1){
 			x++;
 			if(board.getTile(x,y).getType() == TileType.EMPTY){
-				position.x++;
+				position.setX(x);
 				breakChoji(board.getTile(x,y).getThings());
 			}
 		}
-		board.getTile(position.x,position.y).addThings(this);		
+		board.getTile(position.getX(),position.getY()).addThings(this);		
 			
 		
 	}

@@ -9,4 +9,5 @@ public interface IEntity {
 	public  IPosition getPosition();
 	public ImageIcon getBackground();
 	public TileType getType();
+
 }
