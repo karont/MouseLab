@@ -72,24 +72,24 @@ public class BoardGUI extends javax.swing.JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
     	switch(e.getKeyCode()){
     	case KeyEvent.VK_W:
-    		boardcontroler.moveMouse(0, 'w');
-    		boardcontroler.moveMices();
+    		//boardcontroler.moveMouse(0, 'w');
+    		//boardcontroler.moveMices();
     		break;
     	case KeyEvent.VK_S:
-    		boardcontroler.moveMouse(0, 's');
-    		boardcontroler.moveMices();
+    		//boardcontroler.moveMouse(0, 's');
+    		//boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_A:
-    		boardcontroler.moveMouse(0, 'a');
-    		boardcontroler.moveMices();
+    		//boardcontroler.moveMouse(0, 'a');
+    		//boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_D:
-    		boardcontroler.moveMouse(0, 'd');
-    		boardcontroler.moveMices();
+    		//boardcontroler.moveMouse(0, 'd');
+    		//boardcontroler.moveMices();
         	break;
     	case KeyEvent.VK_SPACE:
-    		boardcontroler.eatCheese(0);
-    		boardcontroler.moveMices();
+    		//boardcontroler.eatCheese(0);
+    		//boardcontroler.moveMices();
     	}
     	
     	

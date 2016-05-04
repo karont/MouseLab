@@ -1,11 +1,14 @@
 package modelo.artificialinteligent;
 
-import modelo.entity.Mouse;
+
+
+import modelo.Board;
+import modelo.actions.Action;
 
 public interface AI {
 	
-	public void run(Mouse m);
-	public void observer();
-	public void dameAccion();
+	public AIType getAIType();
+	public void observer(Board b);
+	public Action dameAccion();
 	public void  ultimaAccion();
 }

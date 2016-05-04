@@ -64,7 +64,7 @@ public class BoardControler {
 	}
 	
 	
-	public void moveMouse(int i, char direction){
+	/*public void moveMouse(int i, char direction){
 		
 		Mouse r = (Mouse) mice[i];
 		switch(direction){
@@ -83,8 +83,8 @@ public class BoardControler {
 		}
 		
 		
-	}
-	
+	}*/
+	/*
 	public void moveMices(){
 		for (Mouse m : mice) {
 			if(m.getAI() == AIType.RANDOM)
@@ -92,7 +92,7 @@ public class BoardControler {
 			
 		}
 		
-	}
+	}*/
 	
 	public void eatCheese(int i){
 		Mouse r = (Mouse) mice[i];

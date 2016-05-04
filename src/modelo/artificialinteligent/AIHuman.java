@@ -2,14 +2,19 @@ package modelo.artificialinteligent;
 
 import java.util.Random;
 
+
+
+import modelo.Board;
+import modelo.actions.Action;
 import modelo.entity.Mouse;
 
 public class AIHuman implements AI {
 	private Random r;
+	private AIType type = AIType.RANDOM;
 	public AIHuman(){
 	}
 	
-	@Override
+/*	@Override
 	public void run(Mouse m){
 		
 		switch(r.nextInt(5)){
@@ -33,17 +38,18 @@ public class AIHuman implements AI {
 			
 		}
 
-	}
+	}*/
 
 	@Override
-	public void observer() {
+	public void observer(Board b) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void dameAccion() {
-		// TODO Auto-generated method stub
+	public Action dameAccion() {
+
+		return null;
 		
 	}
 
@@ -51,5 +57,11 @@ public class AIHuman implements AI {
 	public void ultimaAccion() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public AIType getAIType() {
+		// TODO Auto-generated method stub
+		return type;
 	}
 }

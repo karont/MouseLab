@@ -8,8 +8,14 @@ import javax.swing.ImageIcon;
 import modelo.Board;
 import modelo.Position;
 import modelo.TileType;
+import modelo.actions.Action;
+import modelo.actions.Eat;
+import modelo.actions.Move;
+import modelo.actions.Wait;
 import modelo.Tile;
+import modelo.artificialinteligent.AI;
 import modelo.artificialinteligent.AIType;
+import modelo.interfaces.Direction;
 import modelo.interfaces.IEntity;
 import modelo.interfaces.IPosition;
 
@@ -22,9 +28,9 @@ public class Mouse implements IEntity {
 	private Board board;
 	private TileType type;
 	private Boolean eatcheese;
-	private AIType ai;
+	private AI ai;
 	
-	public Mouse(String color, Position p,TileType type, AIType IA){
+	public Mouse(String color, Position p,TileType type, AI IA){
 		this.color = color;
 		this.position = p;
 		this.type = type;
@@ -32,10 +38,10 @@ public class Mouse implements IEntity {
 		this.background = type.getBackground();
 		this.setEatcheese(false);
 	}
-	public AIType getAI() {
+	public AI getAI() {
 		return ai;
 	}
-	public void setAI(AIType iA) {
+	public void setAI(AI iA) {
 		ai = iA;
 	}
 	public String getColor() {
@@ -72,7 +78,7 @@ public class Mouse implements IEntity {
 
 
 	
-	public void moveUp(){
+	private void moveUp(){
 		int x = position.getX();
 		int y = position.getY();
 		board.getTile(position.getX(),position.getY()).removeThings(this);
@@ -85,7 +91,7 @@ public class Mouse implements IEntity {
 		}
 		board.getTile(position.getX(),position.getY()).addThings(this);		
 	}
-	public void moveDown(){
+	private void moveDown(){
 		int x = position.getX();
 		int y = position.getY();
 		board.getTile(position.getX(),position.getY()).removeThings(this);
@@ -100,7 +106,7 @@ public class Mouse implements IEntity {
 		board.getTile(position.getX(),position.getY()).addThings(this);		
 		
 	}
-	public void moveLeft(){
+	private void moveLeft(){
 		int x = position.getX();
 		int y = position.getY();
 		board.getTile(position.getX(),position.getY()).removeThings(this);
@@ -115,7 +121,7 @@ public class Mouse implements IEntity {
 			
 		
 	}
-	public void moveRight(){
+	private void moveRight(){
 		int x = position.getX();
 		int y = position.getY();
 		board.getTile(position.getX(),position.getY()).removeThings(this);
@@ -148,5 +154,46 @@ public class Mouse implements IEntity {
 			
 		}
 	}
+	
+	private void move(Direction dir){
+		switch (dir) {
+		case NORTH:
+			moveUp();
+			break;
+		case SOUTH:
+			moveDown();
+			break;
+		case EAST:
+			moveRight();
+			break;
+		case WEST:
+			moveLeft();
+			break;
+		default:
+			break;
+		}
+	}
+	public void cambiarEstado (Action a){
+		switch (a.getType()) {
+		case WAIT:
+			break;
+		case EAT:
+			eatCheese();
+			break;
+		case MOVE:
+			move(((Move) a).getDir());
+			break;
+		default:
+			break;
+		
+		}
+	}
+	public void action(){
+		ai.observer(board);
+		Action action = ai.dameAccion();
+		cambiarEstado(action);
+		
+	}
+	
 
 }

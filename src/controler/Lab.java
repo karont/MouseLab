@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import modelo.BoardControler;
 import modelo.Position;
 import modelo.TileType;
+import modelo.artificialinteligent.AI;
 import modelo.artificialinteligent.AIType;
 import modelo.entity.Cheese;
 import modelo.entity.Mouse;
@@ -16,10 +17,10 @@ public class Lab {
 	private int width;
 	private int height;
 	private int turns;
-	private AIType myellow;
-	private AIType mred;
-	private AIType mblue;
-	private AIType mgreen;
+	private AI myellow;
+	private AI mred;
+	private AI mblue;
+	private AI mgreen;
 	private WindowGUI windowgui;
 	private Mouse[] mice;
 	
@@ -28,10 +29,10 @@ public class Lab {
 		this.width = width;
 		this.height = height;
 		this.turns = turns;
-		this.myellow = my;
-		this.mred = mr;
-		this.mblue = mb;
-		this.mgreen = mg;
+		this.myellow = my.getAI();
+		this.mred = mr.getAI();
+		this.mblue = mb.getAI();
+		this.mgreen = mg.getAI();
 		
 		mice = new Mouse[4];
     	mice[0] = new Mouse("yellow",new Position(0,0),TileType.YELLOWMOUSE,myellow);
@@ -95,10 +96,9 @@ public class Lab {
 	public void start(){
 
 		for (Mouse m : mice) {
-			/*m.getAI().observer();
-			m.getAI().dameAccion();
-			m.getAI().ultimaAccion();
-			m.cambiarEstado();*/	
+			
+			m.action();
+	
 		}
 		/*windowgui.setEnableBoard(false);
 		for(int i = 0; i<10;i++){
